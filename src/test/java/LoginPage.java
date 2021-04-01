@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -14,10 +16,13 @@ public class LoginPage {
     }
 
     protected void check() {
-
+        (new WebDriverWait(driver, 30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(LOGIN_LOCATOR)));
+        (new WebDriverWait(driver, 30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(PASSWORD_LOCATOR)));
+        (new WebDriverWait(driver, 30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(SIGN_IN_LOCATOR)));
     }
 
-    public UserPage doLogin(String username, String password) {
+    public UserPage doLogin(String username, String password) throws InterruptedException {
+        Thread.sleep(4);
         driver.findElement(By.xpath(LOGIN_LOCATOR)).sendKeys(username);
         driver.findElement(By.xpath(PASSWORD_LOCATOR)).sendKeys(password);
         driver.findElement(By.xpath(SIGN_IN_LOCATOR)).click();

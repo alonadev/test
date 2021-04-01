@@ -1,25 +1,23 @@
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
 
     WebDriver driver;
+    private final String BASE_URL = "https://ok.ru";
 
-    BaseTest() {
-
-    }
-
-    public void driverInit() {
+    @Before
+    public void init() {
         System.setProperty("webdriver.chrome.driver", "/Users/elenapranova/Documents/driver/chromedriver");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get(BASE_URL);
     }
 
-    public void get() {
-        driver.manage().window();
-        driver.get("https://ok.ru/");
-    }
-
-    public void driverDown() {
+    @After
+    public void stop() {
         driver.quit();
     }
 }

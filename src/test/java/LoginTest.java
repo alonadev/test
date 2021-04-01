@@ -6,25 +6,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest extends BaseTest{
 
-    WebDriver driver;
     String username = "Test";
     String password = "12qw!@QW";
 
-
-    @Before
-    public void start() {
-        driverInit();
-        get();
-    }
-
     @Test
-    public void testGoogleSearch() throws InterruptedException  {
-        UserPage userPage = new LoginPage(driver).doLogin(username, password);
-
-    }
-
-    @After
-    public void stop(){
-        driverDown();
+    public void testGoogleSearch() throws InterruptedException {
+        LoginPage userPage = new LoginPage(driver);
+        userPage.doLogin(username, password);
     }
 }
