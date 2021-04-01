@@ -1,15 +1,16 @@
 import org.openqa.selenium.WebDriver;
 
-public class UserPage {
+public class UserPage extends Header {
 
-    WebDriver driver;
 
     UserPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         check();
     }
 
-    protected void check() {
+    public void check() {
 
     }
+
+
 }
